@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BanHackerClicker</title>
+    <title>Выдаватель бана хакеру ИНАТОР</title>
     <style>
         body {
             display: flex;
@@ -52,7 +52,7 @@
             background: rgba(255, 255, 255, 0.2);
             border: none;
             border-radius: 10px;
-            cursor: button;
+            cursor: pointer;
             transition: background 0.3s;
         }
         .reset-button:hover {
@@ -69,7 +69,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="clicker">Срок бана: <span id="count">0</span></div>
+        <div class="clicker">Количество дней бана: <span id="count">0</span></div>
         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAYAAAA5ZDbSAAAAAXNSR0IArs4c6QAABG1JREFUeF7tnb1rU1EAxRNKqsa2BEkHqYigDu0kODhV8B9wLujs4iJuri7dxMVBZ4cuOjh1E+wgDoJTHVQQMRRqkFAapDhEQmhsPkzOPbel3ptf53Py7vude9699/Wr+HRxsVUwvqq7u4arYzlZKtnetnFrairKH2I+0bLwdC9R3tsLudyAtj4zE+UvEvBofgRszC8arEOjwTorS0mDDWw0WIdGg3VWlpIGG9hosA6NBuusLCUNNrDRYB0aDdZZWUoabGCjwTo0GqyzspQ02MBGg3VoNFhnZSkntsF3NjctYJjCCDxbWgoz9Knt7yYRcBR32UzAMqo0hQScZm7yqAlYRpWmkIDTzE0eNQHLqNIUEnCaucmjJmAZVZpCAk4zN3nUBCyjSlNIwGnmJo+agGVUaQoJOM3c5FETsIwqTSEBp5mbPGoCllGlKYwOuNWK/P3INLlNzKiLBJx31gScd74FAibgzAlkfns0mIAzJ5D57dFgAs6cQOa3R4MJOHMCmd8eDSbgzAlkfns0mIAzJ5D57dFgAh5OYDfizwnv7OxEYa1UKlH+6elp2b+9vS1rhwljx1oul6OubzeYgDXuBKxx6lHFQqPBAnQaLEAqFAqxk5FHtMa5R0WDBWg0WIBEgzVI/arYxx4NFrjTYAESDdYg0WCPU9vFOXgMO150GJOLN1k6NI5JOquukk2WAI1NlgCJTZYGiU2Wx4lNlsCNTZYAqV/CJkuHxiZLZzWZm6xarWb9g9y5uTkDbccyOztre9vGZrMZ5Q/ZRZci/9dx7FgbjUbUvRYJeDQ/AjbmFw3WodFgnZW1BtNgAzAN1qHRYJ0VDQ5hxS5ao8UuWuPUo4qFxjFJgE6DBUiHcGZnDdY496hosACNBguQaLAGqV/FGqxz41XlGFa86NAnU1fJiw4d2rFtshYWFoaOsl6v66M/oHx8/oPle7j+I9j36+pN2bM6/1bWHhTe+3bF8lWr1R5frVazPmffZD+iCXg0dwLu40ODO0BocN/E4BE9+knCI3rMCsca3AeITVYHCGswa/DQZwdrMGtw0LGJNZg1eDgBzsGcg4MeJZyDOQcPnTCcgzkHDxDgXbTwcGUNznwNPvvlzdA7LC6vCNNjUPL89G/Ld2v9RbAvpMEv50vBn9823G56vtbGWs/1ti5et66/b7KPSQQ8mvt/E3ChULB+u/Da6mt7ZlV/fre9bWNj40mUP8RcWb4bIh/Q1s+ci/K/e3Ajyl8k4NH8CNiYXzRYh0aDdVaWkgYb2GiwDo0G66wsJQ02sNFgHRoN1llZShpsYKPBOjQarLOylDTYwEaDdWg0WGdlKWmwgY0G69BosM7KUtJgAxsN1qHRYJ2VpaTBBjYarEOLbnCz2bS+4a8PcVB56v2rGHtS3pAfDzqKGysS8FFg/fuZExnw4uVLUVS/rj2K8oeYL6zcD5EPaD9++hzljzUfS4MJODY23U/AY1jRYH0ydZU02IBmWmgwDTanzggbDT58pv/6RBqceYP/AMUfwqiKMpkzAAAAAElFTkSuQmCC" alt="Кликер" class="image" id="clicker-image">
         <button class="reset-button" id="reset-button">Сбросить</button>
         <div id="achievement-message" class="achievement"></div>
@@ -98,7 +98,7 @@
             700: "Достижение: 700 кликов!",
             800: "Достижение: 800 кликов!",
             900: "Достижение: 900 кликов!",
-            1000: "Достижение: 1000 кликов!"
+            1000: "Достижение: 1000 кликов! p.s Кто это читает знайте qeiw0xxi лошара"
         };
 
         function showAchievement(message) {
@@ -138,22 +138,17 @@
             return visitorId;
         }
 
-        // Отправка данных на "сервер" (имитация)
-        function sendVisitorData(visitorId) {
-            // В реальном проекте здесь должен быть запрос на сервер
+        // Имитация "серверного" хранения данных
+        function updateVisitorCounter() {
             let visitors = JSON.parse(localStorage.getItem('visitors')) || [];
+            const visitorId = getVisitorId();
+
             if (!visitors.includes(visitorId)) {
                 visitors.push(visitorId);
                 localStorage.setItem('visitors', JSON.stringify(visitors));
             }
-            return visitors.length;
-        }
 
-        // Обновление счетчика посетителей
-        function updateVisitorCounter() {
-            const visitorId = getVisitorId();
-            const visitorCount = sendVisitorData(visitorId);
-            visitorCountElement.textContent = visitorCount;
+            visitorCountElement.textContent = visitors.length;
         }
 
         // Инициализация счетчика
