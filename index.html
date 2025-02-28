@@ -118,10 +118,14 @@
     left: 10px;
     z-index: 1000;
     background: rgba(255, 255, 255, 0.1);
-    padding: 10px;
-    border-radius: 10px;
+    padding: 15px;
+    border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
 .advertisement img {
@@ -137,16 +141,26 @@
     transform: scale(1.05);
 }
 
-.advertisement img {
-    width: 150px; /* Размер изображения */
-    height: auto;
+/* Стили для кнопки */
+.ad-button {
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    border: none;
     border-radius: 10px;
     cursor: pointer;
-    transition: transform 0.2s;
+    transition: background 0.3s, transform 0.2s;
 }
 
-.advertisement img:hover {
+.ad-button:hover {
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
     transform: scale(1.05);
+}
+
+.ad-button:active {
+    transform: scale(0.95);
 }
     </style>
 </head>
