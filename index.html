@@ -111,6 +111,30 @@
             font-style: italic;
             color: #ffeb3b; /* Желтый цвет для сообщений */
         }
+    /* Стили для рекламы */
+        .advertisement {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+}
+
+.advertisement img {
+    width: 150px; /* Размер изображения */
+    height: auto;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.advertisement img:hover {
+    transform: scale(1.05);
+}
     </style>
 </head>
 <body>
@@ -168,7 +192,7 @@ const imageElement = document.getElementById('clicker-image');
             700: "Достижение: 700 кликов!",
             800: "Достижение: 800 кликов!",
             900: "Достижение: 900 кликов!",
-            1000: "Достижение: 1000 кликов! p.s Кто это читает Держите список лошар:qeiwoxi,angeldemon,создатель этого кликера "
+            1000: "Достижение: 1000 кликов! p.s Кто это читает Держите список лучших людей: qeiw0xxi,подснежная"
         };
 
         function showAchievement(message) {
@@ -293,5 +317,11 @@ const imageElement = document.getElementById('clicker-image');
         // Первоначальное отображение значения счетчика
         countElement.textContent = count;
     </script>
+<!-- Реклама -->
+<div class="advertisement">
+    <a href="ВАША_ССЫЛКА_ЗДЕСЬ" target="_blank">
+        <img src="ВАША_ССЫЛКА_НА_КАРТИНКУ_ЗДЕСЬ" alt="Реклама">
+    </a>
+</div>
 </body>
 </html>
