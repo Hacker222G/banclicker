@@ -111,17 +111,30 @@
             font-style: italic;
             color: #ffeb3b; /* Желтый цвет для сообщений */
         }
-    /* Стили для рекламы */
-        .advertisement {
-            position: fixed;
-            bottom: 10px;
-            left: 10px;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 10px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(10px);
+/* Стили для рекламы */
+.advertisement {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.advertisement img {
+    width: 480px; /* Фиксированная ширина */
+    height: 210px; /* Фиксированная высота */
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    object-fit: cover; /* Чтобы изображение не искажалось */
+}
+
+.advertisement img:hover {
+    transform: scale(1.05);
 }
 
 .advertisement img {
